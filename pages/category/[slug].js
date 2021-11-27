@@ -113,16 +113,19 @@ export const getStaticProps = async ({ params }) => {
         }
         if (i > 0) {
             return {
-                props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode }
+                props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
+                revalidate: 300,
             }
         } else {
             return {
-                props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode }
+                props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
+                revalidate: 300,
             }
         }
     } else {
         return {
-            props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode }
+            props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
+            revalidate: 300,
         }
     }
 
