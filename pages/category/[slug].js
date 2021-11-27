@@ -38,7 +38,7 @@ export const getStaticProps = async ({ params }) => {
     const res = await fetch(url);
     const productDataRes = await res.json();
     var productData = productDataRes.data.products;
-    var i = 0;
+    var i = 1;
     var stockLevelzero = 0;
     var stockLevelCritical = 0;
     var stockLevelGood = 0;
@@ -75,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
     var myObjArr = [];
 
     if (productData) {
-        for (const eachProd of productData.slice(0, 50)) {
+        for (const eachProd of productData) {
             var myObj = {};
             // === 'HX6857/11'
             // === 'HX9990/11'
@@ -84,11 +84,11 @@ export const getStaticProps = async ({ params }) => {
             // === 'HX6062/95' Only in ecom acc
             if (eachProd.ctn) {
                 //console.log(eachProd);
+                i = i+1;
                 myObj.product = eachProd;
                 myObj.productTitle = eachProd.productTitle;
                 myObj.ctn = eachProd.ctn;
                 myObj.brandName = eachProd.brandName;
-                myObj.counter = i;
                 myObj.hasAcc = false;
                 myObj.locale = eachProd.locale;
                 var ctnparam = eachProd.ctn;
@@ -108,9 +108,13 @@ export const getStaticProps = async ({ params }) => {
                 if (accComList.productRelations) {
                     myObj.stockLevel = accComList.stock.stockLevel;
                     myObj.stockLevelStatus = accComList.stock.stockLevelStatus;
-
                     myObj.comObj = accComList.productRelations;
+                    if (accComList.stock.stockLevel <= 0 )  stockLevelzero = stockLevelzero + 1;
+                    if (accComList.stock.stockLevel <= 30 ) stockLevelCritical = stockLevelCritical + 1;
                 }
+                myObj.counter = i;
+                myObj.stockLevelzero = stockLevelzero;
+                myObj.stockLevelCritical = stockLevelCritical;
                 myObjArr.push(myObj);
 
             }
@@ -179,7 +183,7 @@ const Details = ({ myProductData, myTime, slug, mylocale }) => {
                         <div className="lg:col-span-8 col-span-1 bg-blue-900 bg-opacity-25">
                             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
                                 <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold ">
-                                    Out of Stock Products in  {slug}
+                                    Out of Stock Products in  {slug} 
                                 </span>
                             </div>
                         </div>

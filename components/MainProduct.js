@@ -25,6 +25,7 @@ export default function MainProduct({ mainProduct }) {
         <div className={styles.off_brand_info}>
           <h2 className={styles.sm_title}>{mainProduct.product.brandName}  </h2> 
         </div>
+        
         {mainProduct.stockLevel <= 0 &&
         <div className={styles.off_Stock}>
           <h2 className={styles.sm_title}>{mainProduct.stockLevelStatus}</h2>
