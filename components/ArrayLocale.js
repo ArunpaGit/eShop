@@ -40,7 +40,7 @@ exports.allGroups = [
     { group: "UNMAPPED_GR" }
 ];
 
-
+/*
 exports.allGroupsSlug = [    
     { catSlug: "cs_CZ_MOTHER_AND_CHILD_CARE_GR" },
     { catSlug: "da_DK_MOTHER_AND_CHILD_CARE_GR" },
@@ -67,9 +67,9 @@ exports.allGroupsSlug = [
     { catSlug: "sv_SE_MOTHER_AND_CHILD_CARE_GR" },
     { catSlug: "tr_TR_MOTHER_AND_CHILD_CARE_GR" },
     { catSlug: "uk_UA_MOTHER_AND_CHILD_CARE_GR" }];
+*/
 
 
-/*
 exports.allGroupsSlug = [
     { catSlug: "cs_CZ_SOUND_AND_VISION_GR" },
     { catSlug: "da_DK_SOUND_AND_VISION_GR" },
@@ -321,4 +321,3 @@ exports.allGroupsSlug = [
     { catSlug: "sv_SE_UNMAPPED_GR" },
     { catSlug: "tr_TR_UNMAPPED_GR" },
     { catSlug: "uk_UA_UNMAPPED_GR" }];
-*/

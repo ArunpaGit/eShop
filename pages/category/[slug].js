@@ -75,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
     var myObjArr = [];
 
     if (productData) {
-        for (const eachProd of productData) {
+        for (const eachProd of productData.slice(0, 100)) {
             var myObj = {};
             // === 'HX6857/11'
             // === 'HX9990/11'
@@ -122,18 +122,18 @@ export const getStaticProps = async ({ params }) => {
         if (i > 0) {
             return {
                 props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
-                revalidate: 60
+                revalidate: 240,
             }
         } else {
             return {
                 props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
-                revalidate: 60
+                revalidate: 240,
             }
         }
     } else {
         return {
             props: { myProductData: myObjArr, myTime: curtime, slug: slug, mylocale: loccode },
-            revalidate: 60
+            revalidate: 240,
         }
     }
 
