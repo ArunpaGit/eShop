@@ -208,7 +208,7 @@ const Details = ({ myProductData, myTime, slug, mylocale }) => {
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {myProductData.map((myProduct) => (
                                 (myProduct.stockLevel > 0 && myProduct.stockLevel <= 30 &&
                                     <div className={styles.row}>
@@ -228,7 +228,8 @@ const Details = ({ myProductData, myTime, slug, mylocale }) => {
                                 </span>
                             </div>
                         </div>
-                        <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {myProductData.map((myProduct) => (
                                 (myProduct.stockLevel > 30 &&
                                     <div className={styles.row}>
