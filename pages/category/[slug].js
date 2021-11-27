@@ -39,6 +39,9 @@ export const getStaticProps = async ({ params }) => {
     const productDataRes = await res.json();
     var productData = productDataRes.data.products;
     var i = 0;
+    var stockLevelzero = 0;
+    var stockLevelCritical = 0;
+    var stockLevelGood = 0;
     const getMarkAcc = async (newUrl) => {
         const request = await fetch(newUrl);
         const apiData = await request.json();
@@ -72,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
     var myObjArr = [];
 
     if (productData) {
-        for (const eachProd of productData) {
+        for (const eachProd of productData.slice(0, 50)) {
             var myObj = {};
             // === 'HX6857/11'
             // === 'HX9990/11'
