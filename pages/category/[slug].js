@@ -68,10 +68,11 @@ export const getStaticProps = async ({ params }) => {
             return [];
         }
     };
-
+// const eachProd of productData.slice(0, 1)
     var myObjArr = [];
+
     if (productData) {
-        for (const eachProd of productData.slice(0, 1)) {
+        for (const eachProd of productData) {
             var myObj = {};
             // === 'HX6857/11'
             // === 'HX9990/11'
