@@ -30,7 +30,7 @@ export const getStaticProps = async ({ params }) => {
   if (apiData.success) {
     return {
       props: { mydata: apiData.data, myTime: curtime, mylocale : slug },
-      revalidate: 300,
+      revalidate: 60
     }
   } else {
     return [];

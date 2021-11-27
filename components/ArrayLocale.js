@@ -39,6 +39,37 @@ exports.allGroups = [
     { group: "OTHER_PRODUCTS_GR" },
     { group: "UNMAPPED_GR" }
 ];
+
+
+exports.allGroupsSlug = [    
+    { catSlug: "cs_CZ_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "da_DK_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "de_AT_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "de_CH_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "en_AU_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "en_CA_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "en_GB_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "en_SG_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "en_US_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "es_ES_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "fi_FI_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "fr_BE_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "fr_CA_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "fr_CH_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "fr_FR_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "hu_HU_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "it_IT_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "nl_BE_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "nl_NL_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "no_NO_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "ro_RO_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "ru_UA_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "sv_SE_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "tr_TR_MOTHER_AND_CHILD_CARE_GR" },
+    { catSlug: "uk_UA_MOTHER_AND_CHILD_CARE_GR" }];
+
+
+/*
 exports.allGroupsSlug = [
     { catSlug: "cs_CZ_SOUND_AND_VISION_GR" },
     { catSlug: "da_DK_SOUND_AND_VISION_GR" },
@@ -290,3 +321,4 @@ exports.allGroupsSlug = [
     { catSlug: "sv_SE_UNMAPPED_GR" },
     { catSlug: "tr_TR_UNMAPPED_GR" },
     { catSlug: "uk_UA_UNMAPPED_GR" }];
+*/
