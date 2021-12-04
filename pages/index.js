@@ -8,7 +8,7 @@ export const getStaticProps = async ({ params }) => {
   const shops = ArrayLocale.allshops;
   curtime = "Build time: " + moment(curtime).format('MMM DD, YYYY hh:mmm');
 
-  return {
+ return {
     props: { myShops: shops, myTime: curtime, mylocale: "" }
   }
 

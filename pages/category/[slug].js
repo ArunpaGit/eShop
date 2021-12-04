@@ -35,7 +35,9 @@ export const getStaticProps = async ({ params }) => {
     const res = await fetch(url);
     const productDataRes = await res.json();
     var productData = productDataRes.data.products;
-    var i = 1;
+    //var productData = productDataFull.slice(0,100); 
+    var i = 0;
+    var j = 0;
     var stockLevelzero = 0;
     var stockLevelCritical = 0;
     var stockLevelGood = 0;
@@ -62,7 +64,7 @@ export const getStaticProps = async ({ params }) => {
                 return [];
             }
         } catch (error) {
-            console.log(error);
+            console.log(" Error A01" + error);
             return [];
         }
     };
@@ -91,10 +93,11 @@ export const getStaticProps = async ({ params }) => {
         if (accComList.stock.stockLevel <= 0) stockLevelzero = stockLevelzero + 1;
         if (accComList.stock.stockLevel <= 30) stockLevelCritical = stockLevelCritical + 1;
         myObj.stockLevelStatus = accComList.stock.stockLevelStatus;
+        i = i + 1;
         myObj.counter = i;
         myObj.stockLevelzero = stockLevelzero;
         myObj.stockLevelCritical = stockLevelCritical;
-        i = i + 1;
+       
         return myObj;
     }
 
@@ -105,7 +108,15 @@ export const getStaticProps = async ({ params }) => {
             var countryCode = prod.locale.substring(3, 5)
             countryCode = countryCode === "GB" ? "UK" : countryCode;
             var c_newurl = `https://www.pil.occ.shop.philips.com/pilcommercewebservices/v2/${countryCode}_Pub/products/${ctnparam}`;
-            const request = await fetch(c_newurl);
+            const request = await fetch(c_newurl,{
+                method: "GET",
+                headers: {
+                  // update with your user-agent
+                  "User-Agent":
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36", 
+                  Accept: "application/json; charset=UTF-8",
+                },
+              });
             const apiData = await request.json();
             if (apiData) {
                 return getProductObject(apiData, prod);
@@ -113,37 +124,40 @@ export const getStaticProps = async ({ params }) => {
                 return [];
             }
         } catch (error) {
-            console.log(error);
+            console.log(" Error A02" +error);
             return [];
         }
     };
 
     const getProductData = (prod) => new Promise(
         (resolve) => {
+            j= j+1;
             resolve(getComObjNew(prod));
         }
     );
-
+    
 
     const getAllCommercePromise = async () => {
         const promises = productData.map((prod) => getProductData(prod));
         newProdArray = await Promise.all(promises);
-        console.log("--------------- > " + i);
-        console.log('------------P APPP--- > ' + JSON.stringify(newProdArray));
     };
-    console.log('getAllCommercePromise' + productData);
+    
     if (productData != undefined) await getAllCommercePromise();
-    console.log('--------------- > getAllCommercePromise');
-    console.log('--------------- > ' + JSON.stringify(newProdArray));
+    console.log (`Value of i = ${i} and value of j =${j}`);
+    var controlObj = {};
+    controlObj.totalProduct = j;
+    controlObj.totalProductWithData = i;
+    controlObj.stockLevelzero = stockLevelzero;
+    controlObj.stockLevelCritical = stockLevelCritical;
     return {
-        props: { myProductData: newProdArray, myTime: curtime, slug: slug, mylocale: loccode },
+        props: { myProductData: newProdArray, myTime: curtime, slug: slug, mylocale: loccode, controlObj  },
         revalidate: 240,
     }
 
 
 }
 
-const Details = ({ myProductData, myTime, slug, mylocale }) => {
+const Details = ({ myProductData, myTime, slug, mylocale, controlObj }) => {
     if (myProductData === undefined || myProductData.length === 0) {
         return (
             <div className="container mx-auto px-10 mb-8">
@@ -161,8 +175,8 @@ const Details = ({ myProductData, myTime, slug, mylocale }) => {
                     </div>
                     <div className="lg:col-span-4 col-span-1">
                         <div className="lg:sticky relative top-8">
-                            < PostWidget />
-                            < Categories />
+                            < PostWidget group={""} loc={mylocale} myTime={myTime} />
+                            < Categories group={""} loc={mylocale} myTime={myTime} />
                             <h1> {myTime}</h1>
                         </div>
                     </div>
@@ -188,7 +202,11 @@ const Details = ({ myProductData, myTime, slug, mylocale }) => {
                             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
                             <div className="border-b w-full inline-block border-red-400 py-8">
                                 <span className="md:float-left mt-2 align-middle text-white ml-4 font-semibold ">
-                                    Out of Stock Products in  {slug}
+                                    Out of Stock Products in  {slug} - 
+                                    
+                                </span>
+                                <span className="md:float-left mt-2 align-middle text-white ml-4 ">
+                                    Total Prod : {controlObj.totalProduct} / WithData : {controlObj.totalProductWithData} / Out of Stock : {controlObj.stockLevelzero}
                                 </span>
                                 </div> 
                             </div>
