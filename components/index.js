@@ -6,3 +6,4 @@ export { default as Layout } from './Layout';
 export { default as Header } from './Header';
 export { default as ArrayLocale } from './ArrayLocale';
 export { default as MainProduct } from './MainProduct';
+export { default as Footer } from './Footer';
