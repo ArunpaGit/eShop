@@ -8,12 +8,11 @@ export default function MainProduct({ mainProduct }) {
       <div className={styles.product}>
         <div className={styles.product_content}>
          <a href={mainProduct.product.domain + mainProduct.product.productURL} target="_blank"> 
-         <Image src={mainProduct.product.imageURL}   width={220}  height={160}
-          />
+         <img src={mainProduct.product.imageURL} className={styles.responsiveImg}  width={220}  height={160} />
           </a>
         
             <div className={styles.product_info_top}>
-              <a href = {mainProduct.product.domain + mainProduct.product.productURL} target="_blank" className={styles.product_name}>{mainProduct.product.productTitle} </a>
+              <a href = {mainProduct.product.domain + mainProduct.product.productURL} target="_blank" className={styles.product_name_wrap}>{mainProduct.product.productTitle} </a>
             </div>
             <div className={styles.product_info_top}>
                (Stock {mainProduct.stockLevel} )

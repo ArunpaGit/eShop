@@ -114,6 +114,18 @@
     /*text-transform: uppercase;*/
     font-weight: bold;
   }
+  .product_name_wrap{
+    color: black;
+    display: block;
+    text-decoration: none;
+    font-size: 1rem;
+    /*text-transform: uppercase;
+    font-weight: bold;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border: 1px solid #000000;*/
+  }
   .product_price{
     padding-top: 0.6rem;
     padding-right: 0.6rem;
@@ -327,4 +339,16 @@
     border: rgb(10, 14, 2);
     background-color: rgb(27, 26, 26);
     background-size: cover;
+  }
+  .responsiveImg {
+    width: 100%;
+    max-width: 220px;
+    max-height: 220px;
+    height: auto;
+    
+  }
+
+  .responsiveImgFlg {
+    width: auto;
+    height: auto;
   }
