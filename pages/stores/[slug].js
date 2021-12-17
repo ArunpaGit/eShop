@@ -42,7 +42,7 @@ const Details = ({ mydata, myTime,mylocale }) => {
 
     <div className="container mx-auto px-10 mb-8">
       <Head>
-        <title>Store</title>
+        <title>Store111</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
      
