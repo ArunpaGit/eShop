@@ -6,7 +6,7 @@ import { PostCard, PostWidget, Categories, ArrayLocale } from "../components";
 export const getStaticProps = async ({ params }) => {
   var curtime = new Date();
   const shops = ArrayLocale.allshops;
-  curtime = "Build time: " + moment(curtime).format('MMM DD, YYYY hh:mmm');
+  curtime = "Build time:124 " + moment(curtime).format('MMM DD, YYYY hh:mmm');
 
  return {
     props: { myShops: shops, myTime: curtime, mylocale: "" }
